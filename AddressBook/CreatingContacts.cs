@@ -111,6 +111,34 @@ namespace AddressBook
             }
         }
 
+        public void RemoveContact()
+        {
+            Console.WriteLine("Enter the name to search : ");
+            string name = Console.ReadLine();
+            try
+            {
+                foreach (var data in People)
+                {
+                    if (People.Contains(data))
+                    {
+                        if (data.FirstName == name)
+                        {
+                            Console.WriteLine("given name contact exists");
+                            People.Remove(data);
+
+                            Console.WriteLine("contact deleted successfully");
+                            return;
+                        }
+                    }
+                }
+                Console.WriteLine("given name contact does not exists");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
 
         public void output()
         {
