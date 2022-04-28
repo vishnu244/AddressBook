@@ -9,7 +9,7 @@ CreatingContacts contact = new CreatingContacts();
 
 while (true)
 {
-    Console.WriteLine("Enter the number :\n1)creatingcontacts\n2)Edit Detaild\n3)Removing Details\n4)Output Details");
+    Console.WriteLine("Enter the number :\n1)Creatingcontacts\n2)Edit Detaild\n3)Removing Details\n4)Output Details");
     int option = Convert.ToInt32(Console.ReadLine());
     switch(option)
     {
@@ -17,7 +17,7 @@ while (true)
             contact.Contacts();
             break;
         case 2:
-            contact.edit();
+            contact.EditDetails();
             break;
         case 3:
             contact.RemoveContact();
