@@ -21,6 +21,12 @@ namespace AddressBook
             Console.WriteLine("Enter Last Name : ");
             contact.LastName = Console.ReadLine();
 
+            Console.WriteLine("Enter Email : ");
+            contact.Email = Console.ReadLine();
+
+            Console.WriteLine("Enter Phone Number : ");
+            contact.PhoneNumber = Console.ReadLine();
+
             Console.WriteLine("Enter Address : ");
             contact.Address = Console.ReadLine();
 
@@ -32,12 +38,7 @@ namespace AddressBook
 
             Console.WriteLine("Enter State : ");
             contact.State = Console.ReadLine();
-
-            Console.WriteLine("Enter Email : ");
-            contact.Email = Console.ReadLine();
-
-            Console.WriteLine("Enter Phone Number : ");
-            contact.PhoneNumber = Console.ReadLine();
+         
             Console.WriteLine("\n");
 
             People.Add(contact);
@@ -45,29 +46,29 @@ namespace AddressBook
         }
 
 
-        public void edit()
+        public void EditContacts()
         {
             Console.WriteLine("Enter the name to search : ");
             string name = Console.ReadLine();
             foreach (var data in People)
             {
-                if (data.FirstName == null)
+                if (data.FirstName != name)
                 {
-                    Console.WriteLine("Contact for {0} count not be found.", name);
+                    Console.WriteLine("This contact doesn't exists" );
                 }
                 else if (data.FirstName == name)
                 {
-                    Console.WriteLine("choose the option to change the data : \n1) firstName\n2)lastName\n3)address\n4)City\n5)State\n6)Zip\n7)Email\n8)Phone Number");
+                    Console.WriteLine("choose the option to change the data : \n1) FirstName\n2)LastName\n3)Email\n4)Phone Number\n5)Address\n6)City\n7)Zip\n8)State");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
                         case 1:
-                            Console.WriteLine("Please enter the first name : ");
+                            Console.WriteLine("Please enter the First Name : ");
                             string firstName = Console.ReadLine();
                             data.FirstName = firstName;
                             break;
                         case 2:
-                            Console.WriteLine("Please enter the last name : ");
+                            Console.WriteLine("Please enter the Last Name : ");
                             string lastName = Console.ReadLine();
                             data.LastName = lastName;
                             break;
@@ -77,17 +78,17 @@ namespace AddressBook
                             data.Address = address;
                             break;
                         case 4:
-                            Console.WriteLine("Please enter the city : ");
+                            Console.WriteLine("Please enter the City : ");
                             string city = Console.ReadLine();
                             data.City = city;
                             break;
                         case 5:
-                            Console.WriteLine("Please enter the state : ");
+                            Console.WriteLine("Please enter the State : ");
                             string State = Console.ReadLine();
                             data.State = State;
                             break;
                         case 6:
-                            Console.WriteLine("Please enter the zip Code : ");
+                            Console.WriteLine("Please enter the Zip Code : ");
                             string Zip = Console.ReadLine();
                             data.Zip = Zip;
                             break;
@@ -112,6 +113,29 @@ namespace AddressBook
         }
 
 
+
+        public void RemoveContact()
+        {
+            Console.WriteLine("Enter the name to search : ");
+            string name = Console.ReadLine();
+            foreach (var data in People)
+            {
+                if (data.FirstName == name)
+                {
+                    Console.WriteLine("given name contact exists");
+                    People.Remove(data);
+
+                    Console.WriteLine("contact deleted successfully");
+                    return;
+                }
+
+            }
+            Console.WriteLine("given name contact does not exists");
+
+            Console.WriteLine("\n");
+        }
+
+
         public void output()
         {
             foreach (var data in People)
@@ -120,10 +144,10 @@ namespace AddressBook
                 Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
                 Console.WriteLine("Email ID : " + data.Email);
                 Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                Console.WriteLine("Address : " + data.Address);
                 Console.WriteLine("City : " + data.City);
                 Console.WriteLine("State : " + data.State);
                 Console.WriteLine("Zip : " + data.Zip);
-                Console.WriteLine("Address : " + data.Address);
                 Console.WriteLine("\n");
 
             }
