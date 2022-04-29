@@ -10,10 +10,9 @@ namespace AddressBook
     {
         List<contacts> People = new List<contacts> ();
 
-
         public void Contacts()
         {
-            contacts contact = new contacts();
+            contacts contact = new contacts();           
 
             Console.WriteLine("Enter First Name : ");
             contact.FirstName = Console.ReadLine();
@@ -38,13 +37,11 @@ namespace AddressBook
 
             Console.WriteLine("Enter State : ");
             contact.State = Console.ReadLine();
-         
+
             Console.WriteLine("\n");
-
             People.Add(contact);
-            
         }
-
+        
 
         public void EditContacts()
         {
@@ -54,11 +51,11 @@ namespace AddressBook
             {
                 if (data.FirstName != name)
                 {
-                    Console.WriteLine("This contact doesn't exists" );
+                    Console.WriteLine("This contact doesn't exists");
                 }
                 else if (data.FirstName == name)
                 {
-                    Console.WriteLine("choose the option to change the data : \n1) FirstName\n2)LastName\n3)Email\n4)Phone Number\n5)Address\n6)City\n7)Zip\n8)State");
+                    Console.WriteLine("choose the option to change the data : \n1)FirstName\n2)LastName\n3)Email\n4)Phone Number\n5)Address\n6)City\n7)Zip\n8)State");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
@@ -73,34 +70,34 @@ namespace AddressBook
                             data.LastName = lastName;
                             break;
                         case 3:
-                            Console.WriteLine("Please enter the Address : ");
-                            string address = Console.ReadLine();
-                            data.Address = address;
-                            break;
-                        case 4:
-                            Console.WriteLine("Please enter the City : ");
-                            string city = Console.ReadLine();
-                            data.City = city;
-                            break;
-                        case 5:
-                            Console.WriteLine("Please enter the State : ");
-                            string State = Console.ReadLine();
-                            data.State = State;
-                            break;
-                        case 6:
-                            Console.WriteLine("Please enter the Zip Code : ");
-                            string Zip = Console.ReadLine();
-                            data.Zip = Zip;
-                            break;
-                        case 7:
                             Console.WriteLine("Please enter the Email : ");
                             string Email = Console.ReadLine();
                             data.Email = Email;
                             break;
-                        case 8:
+                        case 4:
                             Console.WriteLine("Please enter the Phone Number : ");
                             string PhoneNumber = Console.ReadLine();
                             data.PhoneNumber = PhoneNumber;
+                            break;
+                        case 5:
+                            Console.WriteLine("Please enter the Address : ");
+                            string address = Console.ReadLine();
+                            data.Address = address;
+                            break;
+                        case 6:
+                            Console.WriteLine("Please enter the City : ");
+                            string city = Console.ReadLine();
+                            data.City = city;
+                            break;
+                        case 7:
+                            Console.WriteLine("Please enter the State : ");
+                            string State = Console.ReadLine();
+                            data.State = State;
+                            break;
+                        case 9:
+                            Console.WriteLine("Please enter the Zip Code : ");
+                            string Zip = Console.ReadLine();
+                            data.Zip = Zip;
                             break;
                         default:
                             Console.WriteLine(" Wrong input,please choose from above options :");
@@ -110,9 +107,8 @@ namespace AddressBook
                 }
 
             }
+      
         }
-
-
 
         public void RemoveContact()
         {
@@ -128,11 +124,17 @@ namespace AddressBook
                     Console.WriteLine("contact deleted successfully");
                     return;
                 }
+            }           
+        }
 
+        public void Addmultiplepersons(int n)
+        {
+            while (n > 0)
+            {
+                Contacts();
+                n--;
             }
-            Console.WriteLine("given name contact does not exists");
 
-            Console.WriteLine("\n");
         }
 
 
