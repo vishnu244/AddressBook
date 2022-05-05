@@ -8,7 +8,9 @@ namespace AddressBook
 {
     public class CreatingContacts
     {
-        List<contacts> People = new List<contacts> ();
+        public List<contacts> People = new List<contacts> ();
+        public Dictionary<string, List<contacts>> dict = new Dictionary<string, List<contacts>> ();
+        
 
         public void Contacts()
         {
@@ -137,12 +139,67 @@ namespace AddressBook
 
         }
 
+        public void Adduniquecontacts()
+        {
+            Console.WriteLine("Enter the Firstname in your contactlist");
+            string name = Console.ReadLine();
+            foreach (var data in People)
+            {
+                if (People.Contains(data))
+                {
+                    if (data.FirstName == name)
+                    {
+                        Console.WriteLine("This contact exists please enter an unique name to store this data");
+                        string uniquename = Console.ReadLine();
+                        if (dict.ContainsKey(uniquename))
+                        {
+                            Console.WriteLine("This unique name already exists");
+                        }
+                        dict.Add(uniquename, People);
+                        return;
+                    }
+                }
+                
+
+            }
+            Console.WriteLine("This contactlist doesn't exist, please creat a contactlist");
+            return ;
+            
+        }
+
+
+        public void DisplayUniqueContacts()
+        {
+            Console.WriteLine("Enter the Uniquename of your contacts");
+            string name = Console.ReadLine();
+
+
+            foreach (var contacts in dict)
+            {
+                if (contacts.Key.Contains(name))
+                {
+                    
+                    foreach (var contact in contacts.Value)
+                    {
+                        Console.WriteLine("The details of " + name + " are \n" + "Name: "+contact.FirstName + " " + contact.LastName + "\n" + "Email: " + contact.Email + "\n" +
+                            "Phone Number: " + contact.PhoneNumber + "\n" + "Address: " + contact.Address + "\n" + "city: " + contact.City + "\n" + "Zip: " + contact.Zip  + "\n" + "state: " + contact.State );
+                        return;
+                    }  
+                }
+                else
+                {
+                    Console.WriteLine("this unique name doesn't exist");
+                }      
+                
+            }
+            Console.WriteLine("This Uniquelist doesn't exist, please creat a Uniquelist");           
+        }
+
 
         public void output()
         {
             foreach (var data in People)
             {
-
                 Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
                 Console.WriteLine("Email ID : " + data.Email);
                 Console.WriteLine("Mobile Number : " + data.PhoneNumber);
@@ -152,8 +209,7 @@ namespace AddressBook
                 Console.WriteLine("Zip : " + data.Zip);
                 Console.WriteLine("\n");
 
-            }
-            
+            }           
         }
     }
 }
