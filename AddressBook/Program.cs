@@ -31,8 +31,7 @@ while (true)
             contact.output();
             break;
         case 6:
-            contact.Adduniquecontacts();
-            
+            contact.Adduniquecontacts();           
             break;
         case 7:
             contact.DisplayUniqueContacts();

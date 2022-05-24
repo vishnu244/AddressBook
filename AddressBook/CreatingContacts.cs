@@ -16,31 +16,51 @@ namespace AddressBook
         {
             contacts contact = new contacts();           
 
+            int Flag = 0;
             Console.WriteLine("Enter First Name : ");
             contact.FirstName = Console.ReadLine();
 
-            Console.WriteLine("Enter Last Name : ");
-            contact.LastName = Console.ReadLine();
 
-            Console.WriteLine("Enter Email : ");
-            contact.Email = Console.ReadLine();
+            string FirstNameToBeAdded = contact.FirstName;
+            foreach (var data in People)
+            {
+                if (People.Exists(data => data.FirstName == FirstNameToBeAdded))
+                {
+                    Flag++;
+                    Console.WriteLine("This FirstName already Exist! Can't take the Duplicate Record ");
+                    break;
+                }
 
-            Console.WriteLine("Enter Phone Number : ");
-            contact.PhoneNumber = Console.ReadLine();
+            }
+            if (Flag == 0)
+            {
 
-            Console.WriteLine("Enter Address : ");
-            contact.Address = Console.ReadLine();
+                Console.WriteLine("Enter Last Name : ");
+                contact.LastName = Console.ReadLine();
 
-            Console.WriteLine("Enter City : ");
-            contact.City = Console.ReadLine();
+                Console.WriteLine("Enter Email : ");
+                contact.Email = Console.ReadLine();
 
-            Console.WriteLine("Enter Zip : ");
-            contact.Zip = Console.ReadLine();
+                Console.WriteLine("Enter Phone Number : ");
+                contact.PhoneNumber = Console.ReadLine();
 
-            Console.WriteLine("Enter State : ");
-            contact.State = Console.ReadLine();
+                Console.WriteLine("Enter Address : ");
+                contact.Address = Console.ReadLine();
 
-            Console.WriteLine("\n");
+                Console.WriteLine("Enter City : ");
+                contact.City = Console.ReadLine();
+
+                Console.WriteLine("Enter Zip : ");
+                contact.Zip = Console.ReadLine();
+
+                Console.WriteLine("Enter State : ");
+                contact.State = Console.ReadLine();
+
+                Console.WriteLine("\n");
+
+
+            }
+
             People.Add(contact);
         }
         
@@ -126,6 +146,11 @@ namespace AddressBook
                     Console.WriteLine("contact deleted successfully");
                     return;
                 }
+                else
+                {
+                    Console.WriteLine("given contact doesn't found");
+                }
+
             }           
         }
 
@@ -158,9 +183,7 @@ namespace AddressBook
                         dict.Add(uniquename, People);
                         return;
                     }
-                }
-                
-
+                }               
             }
             Console.WriteLine("This contactlist doesn't exist, please creat a contactlist");
             return ;
@@ -172,25 +195,22 @@ namespace AddressBook
         {
             Console.WriteLine("Enter the Uniquename of your contacts");
             string name = Console.ReadLine();
-
-
             foreach (var contacts in dict)
             {
+                //Console.WriteLine("The details of " + name + " are \n" + contacts.Value);
                 if (contacts.Key.Contains(name))
-                {
-                    
+                {                    
                     foreach (var contact in contacts.Value)
                     {
-                        Console.WriteLine("The details of " + name + " are \n" + "Name: "+contact.FirstName + " " + contact.LastName + "\n" + "Email: " + contact.Email + "\n" +
-                            "Phone Number: " + contact.PhoneNumber + "\n" + "Address: " + contact.Address + "\n" + "city: " + contact.City + "\n" + "Zip: " + contact.Zip  + "\n" + "state: " + contact.State );
+                        Console.WriteLine("The details of " + name + " are \n" + "Name: " + contact.FirstName + " " + contact.LastName + "\n" + "Email: " + contact.Email + "\n" +
+                            "Phone Number: " + contact.PhoneNumber + "\n" + "Address: " + contact.Address + "\n" + "city: " + contact.City + "\n" + "Zip: " + contact.Zip + "\n" + "state: " + contact.State);
                         return;
                     }  
                 }
                 else
                 {
                     Console.WriteLine("this unique name doesn't exist");
-                }      
-                
+                }                     
             }
             Console.WriteLine("This Uniquelist doesn't exist, please creat a Uniquelist");           
         }
