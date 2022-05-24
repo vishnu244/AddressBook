@@ -8,13 +8,13 @@ namespace AddressBook
 {
     public class CreatingContacts
     {
-        public List<contacts> People = new List<contacts> ();
-        public Dictionary<string, List<contacts>> dict = new Dictionary<string, List<contacts>> ();
-        
+        public List<contacts> People = new List<contacts>();
+        public Dictionary<string, List<contacts>> dict = new Dictionary<string, List<contacts>>();
+
 
         public void Contacts()
         {
-            contacts contact = new contacts();           
+            contacts contact = new contacts();
 
             int Flag = 0;
             Console.WriteLine("Enter First Name : ");
@@ -63,7 +63,7 @@ namespace AddressBook
 
             People.Add(contact);
         }
-        
+
 
         public void EditContacts()
         {
@@ -129,7 +129,7 @@ namespace AddressBook
                 }
 
             }
-      
+
         }
 
         public void RemoveContact()
@@ -151,7 +151,7 @@ namespace AddressBook
                     Console.WriteLine("given contact doesn't found");
                 }
 
-            }           
+            }
         }
 
         public void Addmultiplepersons(int n)
@@ -167,6 +167,7 @@ namespace AddressBook
         public void Adduniquecontacts()
         {
             Console.WriteLine("Enter the Firstname in your contactlist");
+
             string name = Console.ReadLine();
             foreach (var data in People)
             {
@@ -183,11 +184,11 @@ namespace AddressBook
                         dict.Add(uniquename, People);
                         return;
                     }
-                }               
+                }
             }
             Console.WriteLine("This contactlist doesn't exist, please creat a contactlist");
-            return ;
-            
+            return;
+
         }
 
 
@@ -199,20 +200,20 @@ namespace AddressBook
             {
                 //Console.WriteLine("The details of " + name + " are \n" + contacts.Value);
                 if (contacts.Key.Contains(name))
-                {                    
+                {
                     foreach (var contact in contacts.Value)
                     {
                         Console.WriteLine("The details of " + name + " are \n" + "Name: " + contact.FirstName + " " + contact.LastName + "\n" + "Email: " + contact.Email + "\n" +
                             "Phone Number: " + contact.PhoneNumber + "\n" + "Address: " + contact.Address + "\n" + "city: " + contact.City + "\n" + "Zip: " + contact.Zip + "\n" + "state: " + contact.State);
                         return;
-                    }  
+                    }
                 }
                 else
                 {
                     Console.WriteLine("this unique name doesn't exist");
-                }                     
+                }
             }
-            Console.WriteLine("This Uniquelist doesn't exist, please creat a Uniquelist");           
+            Console.WriteLine("This Uniquelist doesn't exist, please creat a Uniquelist");
         }
 
 
@@ -229,7 +230,34 @@ namespace AddressBook
                 Console.WriteLine("Zip : " + data.Zip);
                 Console.WriteLine("\n");
 
-            }           
+            }
+        }
+
+
+        
+        public void SearchByCityState()
+        {
+            Console.WriteLine("Please enter the name of City or State:");
+
+            string WantedCityOrState = Console.ReadLine();
+            foreach (var data in People)
+            {
+                string actualcity = data.City;
+                string actualState = data.State;
+                if (People.Exists(data => (actualcity == WantedCityOrState || actualState == WantedCityOrState)))
+                {
+                        Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                        Console.WriteLine("Email ID : " + data.Email);
+                        Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                        Console.WriteLine("Address : " + data.Address);
+                        Console.WriteLine("City : " + data.City);
+                        Console.WriteLine("State : " + data.State);
+                        Console.WriteLine("Zip : " + data.Zip);
+                        Console.WriteLine("\n");
+                }
+
+            }
         }
     }
+
 }
