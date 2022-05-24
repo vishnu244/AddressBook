@@ -39,5 +39,8 @@ while (true)
         case 8:
             contact.SearchByCityState();
             break;
+        case 9:
+            contact.CountByCityState();
+            break;
     }
 }

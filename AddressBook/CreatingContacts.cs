@@ -258,6 +258,25 @@ namespace AddressBook
 
             }
         }
+
+        public void CountByCityState()
+        {
+            Console.WriteLine("Please enter the name of City or State:");
+            string WantedCityOrState = Console.ReadLine();
+
+            int count = 0;
+            foreach (var data in People)
+            {
+                string actualcity = data.City;
+                string actualState = data.State;
+                if (People.Exists(data => (actualcity == WantedCityOrState || actualState == WantedCityOrState)))
+                {
+                    count++;                   
+                }
+            }
+            Console.WriteLine("There are {0} Persons in {1}:",count, WantedCityOrState);
+        }
+
     }
 
 }
