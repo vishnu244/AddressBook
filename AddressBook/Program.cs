@@ -10,7 +10,7 @@ CreatingContacts contact = new CreatingContacts();
 while (true)
 {
     Console.WriteLine("\nEnter the number :\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts" +
-        "\n8)Search Person by city or State\n9)Count Persons by city or State\n10)Contacts by city using Dictionary\n11)Contacts by State using Dictionary\n12)Sorting Details By FirstName");
+        "\n8)Search Person by city or State\n9)Count Persons by city or State\n10)Contacts by city using Dictionary\n11)Contacts by State using Dictionary\n12)Sorting Details By FirstName\n13)Sorting Details By State\n14)Sorting Details By City\n15)Sorting Details By Zip");
     int option = Convert.ToInt32(Console.ReadLine());
     switch(option)
     {
@@ -54,5 +54,18 @@ while (true)
         case 12:
             contact.SortingDetailsByName();
             break;
+        case 13:
+            Console.WriteLine("Sorting details by City");
+            contact.SortingDetailsByCity();
+            break;
+        case 14:
+            Console.WriteLine("Sorting details by State");
+            contact.SortingDetailsByState();
+            break;
+        case 15:
+            Console.WriteLine("Sorting details by Zip");
+            contact.SortingDetailsByZip();
+            break;
+
     }
 }
