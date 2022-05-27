@@ -10,6 +10,9 @@ namespace AddressBook
     {
         public List<contacts> People = new List<contacts>();
         public Dictionary<string, List<contacts>> dict = new Dictionary<string, List<contacts>>();
+        public Dictionary<string, List<contacts>> dictcity = new Dictionary<string, List<contacts>>();
+        public Dictionary<string, List<contacts>> dictstate = new Dictionary<string, List<contacts>>();
+
 
 
         public void Contacts()
@@ -277,6 +280,93 @@ namespace AddressBook
             Console.WriteLine("There are {0} Persons in {1}:",count, WantedCityOrState);
         }
 
+
+        public void ContactsBycity_dictionary()
+        {
+            try
+            {
+                var data = People.GroupBy(x => x.City);
+                foreach (var cities in data)
+                {
+                    List<contacts> cityList = new List<contacts>();
+                    foreach (var city in cities)
+                    {
+                        cityList.Add(city);
+                    }
+                    dictcity.Add(cities.Key, cityList);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        /// <summary>
+        /// view Contacts by Cities
+        /// </summary>
+        /// 
+
+
+        public void ContactsBystate_dictionary()
+        {
+           
+            try
+            {
+                var data = People.GroupBy(x => x.State);
+                foreach (var states in data)
+                {
+                    List<contacts> Statelist = new List<contacts>();
+                    foreach (var State in states)
+                    {
+                        Statelist.Add(State);
+                    }
+                    dictstate.Add(states.Key, Statelist);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        public void DisplayContactsByCities_Dictionary()
+        {
+            if (dictcity.Count == 0)
+                Console.WriteLine("No AddressBook(s) to Show.");
+            if (dictcity.Count >= 1)
+            {
+                foreach (KeyValuePair<string, List<contacts>> addressBooks in dictcity)
+                {
+                    Console.WriteLine("Contacts From City: " + addressBooks.Key);
+                    foreach (contacts items in addressBooks.Value)
+                    {
+                        Console.WriteLine($"Name: {items.FirstName + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}, State: {items.State}" +
+                            $"\n Address: {items.Address}, Zipcode: {items.Zip}, Email: {items.Email}");
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
+
+        public void DisplayContactsByState_dictionary()
+        {
+            if (dictstate.Count == 0)
+                Console.WriteLine("No AddressBook(s) to Show.");
+            if (dictstate.Count >= 1)
+            {
+                foreach (KeyValuePair<string, List<contacts>> addressBooks in dictstate)
+                {
+                    Console.WriteLine("Contacts From State: " + addressBooks.Key);
+                    foreach (contacts items in addressBooks.Value)
+                    {
+                        Console.WriteLine($"Name: {items.FirstName + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}, State: {items.State}" +
+                            $"\n Address: {items.Address}, Zipcode: {items.Zip}, Email: {items.Email}");
+                        Console.WriteLine();
+                    }
+                }
+            }
+        }
     }
 
 }
