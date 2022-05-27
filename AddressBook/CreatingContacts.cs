@@ -332,12 +332,7 @@ namespace AddressBook
                 Console.WriteLine(e.Message);
             }
         }
-        /// <summary>
-        /// view Contacts by Cities
-        /// </summary>
-        /// 
-
-
+       
         public void ContactsBystate_dictionary()
         {
            
@@ -396,6 +391,87 @@ namespace AddressBook
                         Console.WriteLine();
                     }
                 }
+            }
+        }
+
+        public void SortingDetailsByName()
+        {
+            //List<Contact> SortedList = new List<Contact>();
+            //SortedList = People.OrderBy(s => s.firstName).ToList();
+            foreach (var data in People.OrderBy(s => s.FirstName).ToList())
+            {
+                if (People.Contains(data))
+                {
+                    Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Email ID : " + data.Email);
+                    Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                    Console.WriteLine("Address : " + data.Address);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State : " + data.State);
+                    Console.WriteLine("Zip : " + data.Zip);
+                    Console.WriteLine("\n");
+                }
+
+            }
+        }
+
+        public void SortingDetailsByCity()
+        {
+            
+            foreach (var data in People.OrderBy(s => s.City).ToList())
+            {
+                if (People.Contains(data))
+                {
+                    Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Email ID : " + data.Email);
+                    Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                    Console.WriteLine("Address : " + data.Address);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State : " + data.State);
+                    Console.WriteLine("Zip : " + data.Zip);
+                    Console.WriteLine("\n");
+                }
+
+            }
+        }
+
+        public void SortingDetailsByState()
+        {
+
+            foreach (var data in People.OrderBy(s => s.State).ToList())
+            {
+                if (People.Contains(data))
+                {
+                    Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Email ID : " + data.Email);
+                    Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                    Console.WriteLine("Address : " + data.Address);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State : " + data.State);
+                    Console.WriteLine("Zip : " + data.Zip);
+                    Console.WriteLine("\n");
+                }
+
+            }
+        }
+
+        public void SortingDetailsByZip()
+        {
+
+            foreach (var data in People.OrderBy(s => s.Zip).ToList())
+            {
+                if (People.Contains(data))
+                {
+                    Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Email ID : " + data.Email);
+                    Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                    Console.WriteLine("Address : " + data.Address);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State : " + data.State);
+                    Console.WriteLine("Zip : " + data.Zip);
+                    Console.WriteLine("\n");
+                }
+
             }
         }
     }
