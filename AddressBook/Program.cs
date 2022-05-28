@@ -9,9 +9,11 @@ CreatingContacts contact = new CreatingContacts();
 
 while (true)
 {
+
     Console.WriteLine("\nEnter the number :\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts" +
         "\n8)Search Person by city or State\n9)Count Persons by city or State\n10)Contacts by city using Dictionary\n11)Contacts by State using Dictionary\n12)Sorting Details By FirstName\n13)Sorting " +
         "Details By State\n14)Sorting Details By City\n15)Sorting Details By Zip\n16)Write File Using FileIO\n17)Append File Using FileIO\n18)Read File Using FileIO\n19)Updating Contacts to Json File\n20)Reading Contacts from Json File");
+
     int option = Convert.ToInt32(Console.ReadLine());
     switch(option)
     {
@@ -19,7 +21,7 @@ while (true)
             contact.Contacts();
             break;
         case 2:
-            contact.EditContacts();
+            contact.EditDetails();
             break;
         case 3:
             contact.RemoveContact();
@@ -33,7 +35,7 @@ while (true)
             contact.output();
             break;
         case 6:
-            contact.Adduniquecontacts();           
+            contact.Adduniquecontacts();            
             break;
         case 7:
             contact.DisplayUniqueContacts();
