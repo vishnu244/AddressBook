@@ -1,5 +1,5 @@
 FirstName :Vishnu
-lastName :Vardhan]
+lastName :Vardhan
 Email ID :Vishnu@gmail.com
 Mobile Number :1234567890
 City  :Vijayawada

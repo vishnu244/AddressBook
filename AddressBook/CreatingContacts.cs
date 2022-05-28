@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AddressBook
@@ -500,6 +502,36 @@ namespace AddressBook
             Console.WriteLine("Reading All the Text"+ lines);
         }
 
+
+        public void WriteJson()
+        {
+            string json = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\jsconfig1.json";
+            foreach (contacts item in People)
+            {
+                string json1 = JsonConvert.SerializeObject(People);
+                File.WriteAllText(json, json1);
+            }
+            Console.WriteLine("copied all data");
+        }
+
+        public void ReadJsonFile()
+        {
+            string json = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\jsconfig1.json";
+            string jsonData = File.ReadAllText(json);
+            var jsonResult = JsonConvert.DeserializeObject<List<contacts>>(jsonData).ToList();
+            Console.WriteLine("Reading from Json file");
+            foreach (var data in jsonResult)
+            {
+                Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                Console.WriteLine("Email ID : " + data.Email);
+                Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                Console.WriteLine("Address : " + data.Address);
+                Console.WriteLine("City : " + data.City);
+                Console.WriteLine("State : " + data.State);
+                Console.WriteLine("Zip : " + data.Zip);
+                Console.WriteLine("\n");
+            }
+        }
     }
 
 }
