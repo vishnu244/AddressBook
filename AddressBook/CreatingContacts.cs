@@ -443,6 +443,63 @@ namespace AddressBook
 
             }
         }
+
+        string path = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\ReadorWriteUsingFileIO.txt";
+
+        public void WriteInFileIO()
+        {
+            using (TextWriter sw = File.CreateText(path))
+            {
+                foreach (contacts item in People)
+                {
+                    Console.WriteLine("Writing the details in .txt File");
+                    Console.WriteLine("Details updated to the .txt file");
+                    sw.WriteLine("FirstName :" + item.FirstName.ToString());
+                    sw.WriteLine("lastName :" + item.LastName.ToString());
+                    sw.WriteLine("Email ID :" + item.Email.ToString());
+                    sw.WriteLine("Mobile Number :" + item.PhoneNumber.ToString());
+                    sw.WriteLine("City  :" + item.City.ToString());
+                    sw.WriteLine("State :" + item.State.ToString());
+                    sw.WriteLine("ZIP :" + item.Zip.ToString());
+                    Console.WriteLine("\n");
+
+                }
+            }
+        }
+
+
+        public void AppendInFileIO()
+        {
+
+            using (TextWriter Tw = File.AppendText(path)) 
+            {
+                foreach(contacts item in People)
+                {
+                    Console.WriteLine("Appending the new details to the Previous File");
+                    Tw.WriteLine("FirstName :"+ item.FirstName.ToString());
+                    Tw.WriteLine("lastName :" + item.LastName.ToString());
+                    Tw.WriteLine("Email ID :" + item.Email.ToString());
+                    Tw.WriteLine("Mobile Number :" + item.PhoneNumber.ToString());
+                    Tw.WriteLine("City  :" + item.City.ToString());
+                    Tw.WriteLine("State :" + item.State.ToString());
+                    Tw.WriteLine("ZIP :" + item.Zip.ToString());
+                    Console.WriteLine("\n");
+
+
+                }
+            }
+        }
+
+        
+
+        public void ReadFileIO()
+        {
+            string lines;
+
+            lines = File.ReadAllText(path);
+            Console.WriteLine("Reading All the Text"+ lines);
+        }
+
     }
 
 }
