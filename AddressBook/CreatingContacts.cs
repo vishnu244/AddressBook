@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AddressBook
@@ -472,6 +474,93 @@ namespace AddressBook
                     Console.WriteLine("\n");
                 }
 
+            }
+        }
+
+        string path = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\ReadorWriteUsingFileIO.txt";
+
+        public void WriteInFileIO()
+        {
+            using (TextWriter sw = File.CreateText(path))
+            {
+                foreach (contacts item in People)
+                {
+                    Console.WriteLine("Writing the details in .txt File");
+                    Console.WriteLine("Details updated to the .txt file");
+                    sw.WriteLine("FirstName :" + item.FirstName.ToString());
+                    sw.WriteLine("lastName :" + item.LastName.ToString());
+                    sw.WriteLine("Email ID :" + item.Email.ToString());
+                    sw.WriteLine("Mobile Number :" + item.PhoneNumber.ToString());
+                    sw.WriteLine("City  :" + item.City.ToString());
+                    sw.WriteLine("State :" + item.State.ToString());
+                    sw.WriteLine("ZIP :" + item.Zip.ToString());
+                    Console.WriteLine("\n");
+
+                }
+            }
+        }
+
+
+        public void AppendInFileIO()
+        {
+
+            using (TextWriter Tw = File.AppendText(path)) 
+            {
+                foreach(contacts item in People)
+                {
+                    Console.WriteLine("Appending the new details to the Previous File");
+                    Tw.WriteLine("FirstName :"+ item.FirstName.ToString());
+                    Tw.WriteLine("lastName :" + item.LastName.ToString());
+                    Tw.WriteLine("Email ID :" + item.Email.ToString());
+                    Tw.WriteLine("Mobile Number :" + item.PhoneNumber.ToString());
+                    Tw.WriteLine("City  :" + item.City.ToString());
+                    Tw.WriteLine("State :" + item.State.ToString());
+                    Tw.WriteLine("ZIP :" + item.Zip.ToString());
+                    Console.WriteLine("\n");
+
+
+                }
+            }
+        }
+
+        
+
+        public void ReadFileIO()
+        {
+            string lines;
+
+            lines = File.ReadAllText(path);
+            Console.WriteLine("Reading All the Text"+ lines);
+        }
+
+
+        public void WriteJson()
+        {
+            string json = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\jsconfig1.json";
+            foreach (contacts item in People)
+            {
+                string json1 = JsonConvert.SerializeObject(People);
+                File.WriteAllText(json, json1);
+            }
+            Console.WriteLine("copied all data");
+        }
+
+        public void ReadJsonFile()
+        {
+            string json = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\jsconfig1.json";
+            string jsonData = File.ReadAllText(json);
+            var jsonResult = JsonConvert.DeserializeObject<List<contacts>>(jsonData).ToList();
+            Console.WriteLine("Reading from Json file");
+            foreach (var data in jsonResult)
+            {
+                Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                Console.WriteLine("Email ID : " + data.Email);
+                Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                Console.WriteLine("Address : " + data.Address);
+                Console.WriteLine("City : " + data.City);
+                Console.WriteLine("State : " + data.State);
+                Console.WriteLine("Zip : " + data.Zip);
+                Console.WriteLine("\n");
             }
         }
     }
