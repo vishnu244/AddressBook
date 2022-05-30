@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -477,7 +479,7 @@ namespace AddressBook
             }
         }
 
-        string path = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\ReadorWriteUsingFileIO.txt";
+        string path = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\example2.txt";
 
         public void WriteInFileIO()
         {
@@ -563,6 +565,40 @@ namespace AddressBook
                 Console.WriteLine("\n");
             }
         }
+
+
+        public void WriteCsvFile()
+        {
+            string csvPath = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\CSVfile.csv";
+            StreamWriter tw = new (csvPath);
+            using (var csvExport = new CsvWriter(tw, CultureInfo.InvariantCulture))
+            {
+                csvExport.WriteRecords(People);
+            }
+            Console.WriteLine("People List is saved as Csv file");
+
+        }
+        public void ReadCsvFile()
+        {
+            string csvPath = @"C:\Users\Admin\Desktop\Vishnu\AddressBook\AddressBook\CSVfile.csv";
+            StreamReader sr = new (csvPath);
+            CsvReader cr = new (sr, CultureInfo.InvariantCulture);
+            List<contacts> readResult = cr.GetRecords<contacts>().ToList();
+            Console.WriteLine("Reading from CSV file");
+           
+            foreach (var item in readResult)
+            {
+                Console.WriteLine(item.FirstName.ToString());
+                Console.WriteLine(item.LastName.ToString());
+                Console.WriteLine(item.Email.ToString());
+                Console.WriteLine(item.PhoneNumber.ToString());
+                Console.WriteLine(item.Address.ToString());
+                Console.WriteLine(item.City.ToString());
+                Console.WriteLine(item.State.ToString());
+                Console.WriteLine(item.Zip.ToString());
+            }
+        }
+
     }
 
 }
