@@ -13,7 +13,8 @@ while (true)
         "\n8)Search Person by city or State\n9)Count Persons by city or State\n10)Contacts by city using Dictionary\n11)Contacts by State using Dictionary\n12)Sorting Details By FirstName\n13)Sorting " +
         "Details By State\n14)Sorting Details By City\n15)Sorting Details By Zip\n16)Write File Using FileIO\n17)Append File Using FileIO\n18)Read File Using FileIO\n19)Updating Contacts to Json File\n20)" +
         "Reading Contacts from Json File\n21)Write in CSV file\n22)Read from CSV file\n23)Retreiving Details From AddressBook \n24)Display of PersonDetail\n25)Display of Address_Book\n26)Display of PersonTypes" +
-        "\n27)Display of PersonsDetail_Type\n28)Display of Employee_Department\n29)Update Employe details(state)\n30)Added a New Column to PersonDeatils Table\n31)Get details of an Empoloyee in particular DateRange"); 
+        "\n27)Display of PersonsDetail_Type\n28)Display of Employee_Department\n29)Update Employe details(state)\n30)Added a New Column to PersonDeatils Table\n31)Get details of an Empoloyee in particular DateRange" +
+        "\n32)Count By City or state"); 
     int option = Convert.ToInt32(Console.ReadLine());
 
 
@@ -132,8 +133,13 @@ while (true)
             break;
         case 31:
             repo.GetDetails_in_DateRange();
-            //Console.WriteLine("Column Added");
             break;
-
+        case 32:
+            int City = repo.CountOfEmployeeDetailsByCity();
+            Console.WriteLine("Total Employees in the Given city are :" + City);
+            int State = repo.CountOfEmployeeDetailsByState();
+            Console.WriteLine("Total Employees in the Given State are :" + State);            
+            break;
+        
     }
 }

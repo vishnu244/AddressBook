@@ -325,5 +325,32 @@ namespace AddressBook
             Connection.Close();
 
         }
+
+
+        //UC-19 Count by City or state
+        public int CountOfEmployeeDetailsByCity()
+        {
+            int count;
+            Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =addressbook_practice; Integrated Security = True;");
+            Connection.Open();
+            string query = @"Select count(*) from PersonDetail where City='Vijayawada';";
+            SqlCommand command = new SqlCommand(query, Connection);
+            object res = command.ExecuteScalar();
+            Connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
+        public int CountOfEmployeeDetailsByState()
+        {
+            int count;
+            Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =addressbook_practice; Integrated Security = True;");
+            Connection.Open();
+            string query = @"Select count(*) from PersonDetail where State='Andhra Pradesh';";
+            SqlCommand command = new SqlCommand(query, Connection);
+            object res = command.ExecuteScalar();
+            Connection.Close();
+            int Count = (int)res;
+            return Count;
+        }
     }
 }
