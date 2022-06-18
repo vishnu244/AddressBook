@@ -234,5 +234,28 @@ namespace AddressBook
             }
         }
 
+
+        // UC 17method to Update detail of already existing details
+        public string updateEmployeeDetails()
+        {
+            AddressBookModel addressmodel = new AddressBookModel();
+
+            Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =addressbook_practice; Integrated Security = True;");
+            Connection.Open();
+            SqlCommand command = new SqlCommand("update PersonDetail set State = 'AP' where FirstName='Vishnu'", Connection);
+
+            int effectedRow = command.ExecuteNonQuery();
+            if (effectedRow == 1)
+            {
+                string query = @"Select State from PersonDetail where FirstName='Vishnu';";
+                SqlCommand cmd = new SqlCommand(query, Connection);
+                object res = cmd.ExecuteScalar();
+                Connection.Close();
+                addressmodel.Address = (string)res;
+            }
+            Connection.Close();
+            return (addressmodel.Address);
+        }
+
     }
 }

@@ -60,5 +60,14 @@ namespace AddressBook.Tests
             repo.GetAllContactOf_Employee_Department();
             Console.WriteLine("*********************************************************");
         }
+
+        [TestMethod()]
+        public void updateEmployeeDetails()
+        {
+            string expected = "AP";
+            string state = repo.updateEmployeeDetails();
+            Console.WriteLine("upadated State = " + state);
+            Assert.AreEqual(expected, state);
+        }
     }
 }

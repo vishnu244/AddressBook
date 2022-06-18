@@ -12,8 +12,8 @@ while (true)
     Console.WriteLine("\nEnter the number :\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts" +
         "\n8)Search Person by city or State\n9)Count Persons by city or State\n10)Contacts by city using Dictionary\n11)Contacts by State using Dictionary\n12)Sorting Details By FirstName\n13)Sorting " +
         "Details By State\n14)Sorting Details By City\n15)Sorting Details By Zip\n16)Write File Using FileIO\n17)Append File Using FileIO\n18)Read File Using FileIO\n19)Updating Contacts to Json File\n20)" +
-        "Reading Contacts from Json File\n21)Write in CSV file\n22)Read from CSV file\n23)Retreiving Details From AddressBook \n23)Display of PersonDetail\n24)Display of Address_Book\n25)Display of PersonTypes" +
-        "\n26)Display of PersonsDetail_Type\n27)Display of Employee_Department"); 
+        "Reading Contacts from Json File\n21)Write in CSV file\n22)Read from CSV file\n23)Retreiving Details From AddressBook \n24)Display of PersonDetail\n25)Display of Address_Book\n26)Display of PersonTypes" +
+        "\n27)Display of PersonsDetail_Type\n28)Display of Employee_Department\n29)Update Employe details(state)"); 
     int option = Convert.ToInt32(Console.ReadLine());
 
 
@@ -121,6 +121,10 @@ while (true)
             Console.WriteLine("Display of Employee_Department");
             repo.GetAllContactOf_Employee_Department();
             Console.WriteLine("*********************************************************");
+            break;
+        case 29:
+            string state = repo.updateEmployeeDetails();
+            Console.WriteLine("upadated State = " + state);
             break;
 
     }
