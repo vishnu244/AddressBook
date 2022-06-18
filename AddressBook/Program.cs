@@ -4,7 +4,7 @@ using AddressBook;
 Console.WriteLine("Welcom to Address Book Program!");
 
 CreatingContacts contact = new CreatingContacts();
-
+AddressBookRepo repo = new AddressBookRepo();
 
 
 while (true)
@@ -12,8 +12,11 @@ while (true)
     Console.WriteLine("\nEnter the number :\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts" +
         "\n8)Search Person by city or State\n9)Count Persons by city or State\n10)Contacts by city using Dictionary\n11)Contacts by State using Dictionary\n12)Sorting Details By FirstName\n13)Sorting " +
         "Details By State\n14)Sorting Details By City\n15)Sorting Details By Zip\n16)Write File Using FileIO\n17)Append File Using FileIO\n18)Read File Using FileIO\n19)Updating Contacts to Json File\n20)" +
-        "Reading Contacts from Json File\n21)Write in CSV file\n22)Read from CSV file");
+        "Reading Contacts from Json File\n21)Write in CSV file\n22)Read from CSV file\n23)Retreiving Details From AddressBook \n23)Display of PersonDetail\n24)Display of Address_Book\n25)Display of PersonTypes" +
+        "\n26)Display of PersonsDetail_Type\n27)Display of Employee_Department"); 
     int option = Convert.ToInt32(Console.ReadLine());
+
+
     switch(option)
     {
         case 1:
@@ -88,6 +91,36 @@ while (true)
             break;
         case 22:
             contact.ReadCsvFile();
+            break;
+        case 23:
+            Console.WriteLine("Display of AddressBook");          
+            repo.GetAllContactOf_AddressBook();
+            Console.WriteLine("*********************************************************");
+            break;
+        case 24:
+            Console.WriteLine("Display of PersonDetail");
+            repo.GetAllContactOf_PersonDetail();
+            Console.WriteLine("*********************************************************");
+            break;
+        case 25:
+            Console.WriteLine("Display of Address_Book");
+            repo.GetAllContactOf_Address_Book();
+            Console.WriteLine("*********************************************************");
+            break;
+        case 26:
+            Console.WriteLine("Display of PersonTypes");
+            repo.GetAllContactOf_PersonTypes();
+            Console.WriteLine("*********************************************************");
+            break;
+        case 27:
+            Console.WriteLine("Display of PersonsDetail_Type");
+            repo.GetAllContactOf_PersonsDetail_Type();
+            Console.WriteLine("*********************************************************");
+            break;
+        case 28:
+            Console.WriteLine("Display of Employee_Department");
+            repo.GetAllContactOf_Employee_Department();
+            Console.WriteLine("*********************************************************");
             break;
 
     }
