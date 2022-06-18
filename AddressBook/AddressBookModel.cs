@@ -42,6 +42,9 @@ namespace AddressBook
         public long PhoneNumber { get; set; }
         //is in bigint
         public string Email_ID { get; set; }
+        public DateTime date_added { get; set; }
+
+
     }
 
     public class PersonTypes1

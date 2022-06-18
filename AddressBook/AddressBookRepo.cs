@@ -87,6 +87,8 @@ namespace AddressBook
                             personDetail1.Zip = datareader.GetInt32(7);
                             personDetail1.PhoneNumber = datareader.GetInt64(8);
                             personDetail1.Email_ID = datareader.GetString(9);
+                            personDetail1.date_added = datareader.GetDateTime(10);
+
 
                             Console.WriteLine(personDetail1.FirstName + " " +
                                 personDetail1.LastName + " " +
@@ -95,7 +97,8 @@ namespace AddressBook
                                 personDetail1.State + " " +
                                 personDetail1.Zip + " " +
                                 personDetail1.PhoneNumber + " " +
-                                personDetail1.Email_ID + " "
+                                personDetail1.Email_ID + " " +
+                                personDetail1.date_added
                                 );
                         }
                     }
@@ -257,5 +260,70 @@ namespace AddressBook
             return (addressmodel.Address);
         }
 
+
+
+        // UC 18 Add New Column date_added to Existing Table and insert values and retreive Details of an Employee Joined in Particular date
+        public void AddColumn_date_added()
+        {
+            AddressBookModel addressmodel = new AddressBookModel();
+
+            Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =addressbook_practice; Integrated Security = True;");
+            Connection.Open();
+            SqlCommand command = new SqlCommand("Alter table PersonDetail Add date_added DateTime", Connection);
+
+            int effectedRow = command.ExecuteNonQuery();
+            if (effectedRow == 1)
+            {
+                string query = @"update PersonDetail set date_added = Date.Now;";
+                SqlCommand cmd = new SqlCommand(query, Connection);
+                object res = cmd.ExecuteScalar();
+                Connection.Close();
+                addressmodel.Address = (string)res;
+            }
+            Connection.Close();
+        }
+        public void GetDetails_in_DateRange()
+        {
+            AddressBookModel addressmodel = new AddressBookModel();
+
+            Connection = new SqlConnection(@"Data Source=LAPTOP-7SFIPVKT; Initial Catalog =addressbook_practice; Integrated Security = True;");
+            Connection.Open();
+            SqlCommand command = new SqlCommand("Select * from PersonDetail where date_added between cast('10/04/2022' as date) and cast('10/06/2022' as date) ", Connection);
+            int effectedRow = command.ExecuteNonQuery();
+
+
+            SqlDataReader datareader = command.ExecuteReader();
+            if (datareader.HasRows)
+            {
+                while (datareader.Read())
+                {
+                    personDetail1.PersonId = datareader.GetInt32(0);
+                    personDetail1.AddressBookId = datareader.GetInt32(1);
+                    personDetail1.FirstName = datareader.GetString(2);
+                    personDetail1.LastName = datareader.GetString(3);
+                    personDetail1.Address = datareader.GetString(4);
+                    personDetail1.City = datareader.GetString(5);
+                    personDetail1.State = datareader.GetString(6);
+                    personDetail1.Zip = datareader.GetInt32(7);
+                    personDetail1.PhoneNumber = datareader.GetInt64(8);
+                    personDetail1.Email_ID = datareader.GetString(9);
+                    personDetail1.date_added = datareader.GetDateTime(10);
+
+
+                    Console.WriteLine(personDetail1.FirstName + " " +
+                        personDetail1.LastName + " " +
+                        personDetail1.Address + " " +
+                        personDetail1.City + " " +
+                        personDetail1.State + " " +
+                        personDetail1.Zip + " " +
+                        personDetail1.PhoneNumber + " " +
+                        personDetail1.Email_ID + " " +
+                        personDetail1.date_added
+                        );
+                }
+            }
+            Connection.Close();
+
+        }
     }
 }
